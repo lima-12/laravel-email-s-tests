@@ -36,8 +36,9 @@ class SeriesController extends Controller
     {
         // dd($request->file('cover'));
 
-        $coverPath = $request->file('cover')
-            ->store('series_cover', 'public');
+        $coverPath = $request->hasFile('cover_path') 
+            ? $request->file('cover')->store('series_cover', 'public') 
+            : null;
 
         $request->coverPath = $coverPath;
 
